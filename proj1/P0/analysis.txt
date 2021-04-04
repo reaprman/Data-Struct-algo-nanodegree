@@ -1,0 +1,53 @@
+NOTE:
+All answers are the Time Complexity analysis of only the code added to answer each task
+for set(s) and dict(s) I am using the average case on (if in) look ups as python hash function can make collisisons uncommon
+
+Task0.py 
+1 print line added with for both the 2d lists for calls and texts contains 3 lookups each (O(2)) for total of O(12)
+1 line to determine size of calls lists. O(1)
+
+so O(7) simplified down to O(1)
+
+
+Task1.py
+1 for loop for both of the 2d lists(calls(f(n)), texts(g(n)), seperate inputs). each loop has 2, (if in) checks
+1 append line for each (if in) check
+1 print line with size of list
+
+f(n) = 6n
+g(n) = 6n
+
+O(f(n) + g(n) + 3) = O(6n + 6n + 3) = O(12n+3) = O(n)
+
+
+Task2.py
+1 for loop on 2d list calls(f(n)) with: 2 (if not in) checks, 5 if comparisons, 11 variable assignments
+
+f(n) = 18n
+
+O(f(n) + 4) = O(18n + 4) = O(n)
+
+
+Task3.py
+1 custom function with O(6) complexity if the .find function is not fully factored w/ find function O(nm)
+1 for loop on 2d list calls(f(n)) with: 1 if comparison, 2(if in) checks, and 4 lines that are O(1) each and function call - O(6n*n*n)=O(6n^3) w/find O(5n*nm*n) = O(5mn^3)
+1 for loop or 1d list with: 1 print line - O(n)
+1 line for percent with round - O(2)
+sort of list using .sort() - O(n log n)
+2 print lines - O(2)
+
+Answer: O(6n^3 + n + n log n + 4 = O(n log n)  
+w/ find function O(5mn^3 + n + n log n + 4) = O(n log n)
+
+
+Task4.py
+1 for loop for each 2d list calls(f(n)), texts(g(n)) with 2 (if not in set) and 2 set add statements each - O(4n)
+1 set copy - O(n)
+1 for loop over setcopy with if in and discard statment - O(3n)
+1 sort of set - O(n log n)
+1 print line - (O(1)
+l for loop of sorted set with print line - O(n)
+
+O(4n + 4n + n + 3n + n log n + n + 1) = O(13n + n log n +1)  = O(n log n)
+
+
