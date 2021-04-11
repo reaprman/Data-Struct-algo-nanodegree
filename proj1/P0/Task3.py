@@ -41,13 +41,13 @@ for row in calls:
       totCall += 1
 
 
-percent = round(bangCall / totCall, 2)
+percent = round((bangCall / totCall) *100, 2)
 partA.sort()
 print("The numbers called by people in Bangalore have codes:")
 for n in partA:
   print(n)
 
-print(percent,"percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore")
+print(str(percent)+"% percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore")
 
 
 

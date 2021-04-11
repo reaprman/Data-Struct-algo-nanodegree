@@ -16,16 +16,12 @@ telSet = set()
 non_tel = set()
 
 for row in calls:
-    if row[0] not in telSet:
-        telSet.add(row[0])
-    if row[1] not in non_tel:
-        non_tel.add(row[1])
+    telSet.add(row[0])
+    non_tel.add(row[1])
 
 for row in texts:
-    if row[0] not in non_tel:
-        non_tel.add(row[0])
-    if row[1] not in non_tel:
-        non_tel.add(row[1])
+    non_tel.add(row[0])
+    non_tel.add(row[1])
 
 copy_telSet = telSet.copy()
 for num in copy_telSet:
