@@ -1,5 +1,4 @@
 import sys
-import heapq
 
 class node():
     def __init__(self,freq, character) :
@@ -8,75 +7,78 @@ class node():
         self.character = character
         self.freq = freq
         self.direction = '' #0 - left, 1 - right
-
-def find_leafnode(tree, char, code):
-    newCode = str(code)
-    newCode = newCode + str(tree.direction)
-    if tree.left:
-        find_leafnode(tree.left, char, newCode)
-    if tree.right:
-        find_leafnode(tree.right, char, newCode)
-    if tree.character == char:
-        print(char +" the code is - " + newCode)
-        print("the tree direction is - " + str(tree.direction))
-        return newCode
     
-
 def printNodes(nodes):
     for node in nodes:
         print(node.character + " - " + str(node.freq))
 
 # returns the data after it is encoded and the tree created from the initial data to encode the data
-def huffman_encoding(data):
-    char_count = dict()
-    char_data = dict()  
-    nodes = []
-    for char in data:
-        char_count[char] = data.count(char)
-    for char in char_count:
-        nodes.append(node(char_count[char], char))
-    printNodes(nodes)
-    print("******************")
-    while len(nodes) > 1:
-        nodes = sorted(nodes, key=lambda x: x.freq)
-        left = nodes[0]
-        right = nodes[1]
+class Huffman_Coding:
+    def find_leafnodes(tree, current_code):
+        codes = dict()
+        if tree == None:
+            return codes
+        if tree.character is not None:
+            codes[tree.character] = current_code
 
-        nodes.remove(left)
-        nodes.remove(right)
+        codes.update(Huffman_Coding.find_leafnodes(tree.left, current_code + "0"))
+        codes.update(Huffman_Coding.find_leafnodes(tree.right, current_code + "1"))
+        return codes
+
+    def huffman_encoding(data):
+        char_count = dict()  
+        nodes = []
+        for char in data:
+            char_count[char] = data.count(char)
+        for char in char_count:
+            nodes.append(node(char_count[char], char))
+        while len(nodes) > 1:
+            nodes = sorted(nodes, key=lambda x: x.freq)
+            left = nodes[0]
+            right = nodes[1]
+
+            nodes.remove(left)
+            nodes.remove(right)
+            left.direction = 0
+            right.direction = 1
+
+            merge = node(left.freq+right.freq, left.character+right.character)
+            merge.left = left
+            merge.right = right
+
+            nodes.append(merge)
+
+        char_data = Huffman_Coding.find_leafnodes(nodes[0],"")
         
-        print("left removed: " + left.character)
-        print("right removed: " + right.character)
-        left.direction = 0
-        right.direction = 1
-
-        merge = node(left.freq+right.freq, left.character+right.character)
-        merge.left = left
-        merge.right = right
-
-        nodes.append(merge)
-        printNodes(nodes)
-        print("******************")
-
-    for char in char_count:
-        char_code = find_leafnode(nodes[0], char, "")
-        print(char_code)
-        char_data[char] = char_code
-
-    print(char_data)
-    
-    #huffman tree created now generated encoded data
-    #for char in data:
+        #huffman tree created now generated encoded data
+        encoded_text = Huffman_Coding.get_huffman_encoded_text(data, char_data)
+        return encoded_text, nodes[0]
 
 
+        pass
+    def get_huffman_encoded_text(text, codes):
+        encoded_text = "" 
+        for char in text:
+            encoded_text += codes[char]
+        return encoded_text
 
-        
+    # returns the decoded data(original data) using the hoffman tree
+    def huffman_decoding(encoded_text,tree):
+        decoded_text = ""
+        if encoded_text == "":
+            return decoded_text
+        current_node = tree
+        for char in encoded_text:
+            if char == '0':
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+            if current_node.left == None and current_node.right == None:
+                decoded_text += current_node.character
+                current_node = tree
+        return decoded_text
 
-    pass
-
-# returns the decoded data(original data) using the hoffman tree
-def huffman_decoding(data,tree):
-    pass
+        pass
 
 if __name__ == "__main__":
     codes = {}
@@ -86,12 +88,12 @@ if __name__ == "__main__":
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))
 
-    encoded_data, tree = huffman_encoding(a_great_sentence)
+    encoded_data, tree = Huffman_Coding.huffman_encoding(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
 
-    decoded_data = huffman_decoding(encoded_data, tree)
+    decoded_data = Huffman_Coding.huffman_decoding(encoded_data, tree)
 
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
