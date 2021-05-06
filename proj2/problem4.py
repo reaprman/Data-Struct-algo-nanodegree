@@ -54,3 +54,8 @@ if is_user_in_group(sub_child_user, parent):
 else:
     print("User Not in group")
 
+if is_user_in_group("Parent", parent):
+    print("User is in group")
+else:
+    print("User Not in group")
+
