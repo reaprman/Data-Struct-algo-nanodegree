@@ -1,3 +1,7 @@
+""" 
+the encoding and decoding sections were assisted by mentor: Mahmoud R
+
+ """
 import sys
 
 class node():
