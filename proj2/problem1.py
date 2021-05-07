@@ -69,12 +69,7 @@ class LRU_Cache(object):
             head.prev = cache_item
             self.head = cache_item
 
-        cache_map[key] = cache_item
-        print(cache_item)
-        print(cache_item.value)
-        print(cache_item.next)
-        print(cache_item.prev)
-        
+        cache_map[key] = cache_item        
         pass
 
 our_cache = LRU_Cache(5)
