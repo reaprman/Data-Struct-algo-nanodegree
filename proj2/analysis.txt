@@ -1,0 +1,65 @@
+NOTE:
+All answers are the Time Complexity analysis of only the code added to answer each task
+for set(s) and dict(s) I am using the average case on (if in) look ups as python hash function can make collisions uncommon
+
+problem1.py
+used a dict for the map to hold the nodes of the cache and used the key of the each node to link in the map
+as there are no loops and 20 lines of code for the get function. storing the nodes in the map allows for constant
+time look up.
+
+set function contains 14 lines of code and no loops.
+
+time complexity for get function - O(1)
+time complexity for set function - O(1)
+
+f(n) = O(1)
+
+
+Problem2.py
+This problem has 7 lines of code with 1 loop and 1 recursive call. the recursive call is only depeding on how many subfolders
+the original folder path contains. The recursion here is difficult to calculate and the course doesn't really provide any details on this so
+my best guess is below.the f(n) represents the recursive function. n in this case represents the number of sub folders
+
+f(n) = 4n+1 + f(n)
+
+
+Problem3.py
+I did not use a heap on this as it was more difficult to handle. used a list that needed to be sorted.
+print function - O(n) n is the number of nodes
+huffman leafnodes function - 8 lines of code with 2 recursive calls each time the function is called
+O(2^n)
+huffman encoding function - 3 loops non nested with recursive function call and sorting
+f(n) = n + n + 10n * log n = O(n log n)
+
+get encoded text function - 4 lines of code and 1 loop - n+2
+function to return decoded data - 12 lines of code with 1 loop  - 6n + 4
+
+worst case time complexity
+f(n) = O(2^n)
+
+Problem4.py
+only 1 funciton to code here.
+9 lines of code with 1 loop and 1 recursive call, 1 if in statement (loop)
+n is the number of groups to search through
+f(n) is the time complexity for the recursive function. as it is called recursively this plays apart into the calculation
+I was unable to identify a method to break it down further.
+
+f(n)= n+4 + n(f(n)) + 1  = 2n(f(n)) + 5
+
+Problem5.py
+createtimestamp function - O(1)
+hash function - O(1)
+add block function - 10 lines of code no loops or recursion = O(1)
+append function - 9 lines of code no loops or recursion = O(1)
+
+f(n) = O(1)
+
+
+Problem6.py
+2 functions added. intersection function has if in check (loop)
+
+union -  2n+2n+n + 4  = 5n+4 = O(n)
+intersection - 2n+2n + n^2 + 6 = 4n + n^2 +6 = O(n^2)
+
+f(n) = O(n^2)
+
