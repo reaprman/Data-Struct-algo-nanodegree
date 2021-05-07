@@ -63,13 +63,25 @@ class BlockChain:
 
 data_to_hash = "This is the data to hash"
 startBlock = Block(datetime.now(),data_to_hash, 0)
-"Hash me please"
-
-print(startBlock.hash)
 
 chain1 = BlockChain()
 chain1.append(startBlock)
+print("first test case")
 print(chain1)
 print(chain1.first)
 chain1.addBlock("Hash me please")
 print(chain1.last)
+
+print("second test case")
+chain2 = BlockChain()
+print(chain2)
+print(chain2.first)
+
+print("third test case")
+block3_test1 = Block(datetime.now(),data_to_hash)
+print(block3_test1.timestamp)
+block3_test2 = Block(datetime.now(),"Third test case for same timestamp")
+print(block3_test2.timestamp)
+chain3 = BlockChain()
+chain3.append(block3_test1)
+chain3.append(block3_test2)
