@@ -8,13 +8,13 @@ def is_user_in_group(user, group):
     """
     curr_group = group
     users = curr_group.get_users()
-    if not users:
+    if users:
+        if user in users:
+            return True
+    else:
         groups = curr_group.get_groups()
         for i in range(len(groups)):
             return is_user_in_group(user, groups[i])
-    else:
-        if user in users:
-            return True
     return False
 
 class Group(object):
