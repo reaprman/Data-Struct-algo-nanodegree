@@ -14,6 +14,12 @@ time complexity for set function - O(1)
 
 f(n) = O(1)
 
+space complexity - cache capacity defaluted to 5
+node - 2 ints and 2 node objects, so the prev and next pointers could hold an object that is 8 bytes 1 node is 12 bytes O(1)
+get function - 1 map and 5 node variables, so 60 bytes for nodes and the map size is defaluted. O(1)
+set function - each set operation increases size of map by 1 until it gets to 5. as the capacity is defaulted to 5 i will say this function is O(1)
+
+s(n) = O(1)
 
 Problem2.py
 This problem has 7 lines of code with 1 loop and 1 recursive call. the recursive call is only depeding on how many subfolders
@@ -21,6 +27,9 @@ the original folder path contains. The recursion here is difficult to calculate 
 my best guess is below.the f(n) represents the recursive function. n in this case represents the number of sub folders
 
 f(n) = 4n+1 + f(n)
+
+space complexity
+s(n) = O(n)
 
 
 Problem3.py
@@ -35,7 +44,12 @@ get encoded text function - 4 lines of code and 1 loop - n+2
 function to return decoded data - 12 lines of code with 1 loop  - 6n + 4
 
 worst case time complexity
-f(n) = O(2^n)
+f(n) = O(n +n) = O(n)
+
+
+space complexity due to recursive calls and loop that needs to account for the amount of data. number of nodes depends on size of data
+the recursive call counts towads the space as n and the loop is n so n^2
+s(n) = O(n^2)
 
 Problem4.py
 only 1 funciton to code here.
@@ -46,6 +60,10 @@ I was unable to identify a method to break it down further.
 
 f(n)= n+4 + n(f(n)) + 1  = 2n(f(n)) + 5
 
+space complexity - problem contains recursive funtion that will loop through all groups until user is found if not found returns false
+s(n) = O(n) n represents the number of groups 
+
+
 Problem5.py
 createtimestamp function - O(1)
 hash function - O(1)
@@ -53,6 +71,10 @@ add block function - 10 lines of code no loops or recursion = O(1)
 append function - 9 lines of code no loops or recursion = O(1)
 
 f(n) = O(1)
+
+space complexity - no loops or recursion to affect call stack memory
+s(n) = O(1)
+
 
 
 Problem6.py
@@ -62,4 +84,11 @@ union -  2n+2n+n + 4  = 5n+4 = O(n)
 intersection - 2n+2n + n^2 + 6 = 4n + n^2 +6 = O(n^2)
 
 f(n) = O(n^2)
+
+space complexity - 
+union function depends on number of nodes in each list to merge - O(n) the set and the linked list are dependent on this
+intersection function depends on number of nodes that are the same. the set depend on the number of nodes in each list and the final list size
+depends on the number of values in each set that are the same.
+
+s(n) = O(n)
 
