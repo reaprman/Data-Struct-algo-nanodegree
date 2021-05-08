@@ -37,6 +37,9 @@ class Huffman_Coding:
             char_count[char] = data.count(char)
         for char in char_count:
             nodes.append(node(char_count[char], char))
+        if len(nodes) < 1:
+            return None, None
+
         if len(nodes) == 1:
             left, right = nodes[0], nodes[0]
             merge = node(left.freq+right.freq, left.character+right.character)
@@ -76,7 +79,7 @@ class Huffman_Coding:
     # returns the decoded data(original data) using the hoffman tree
     def huffman_decoding(encoded_text,tree):
         decoded_text = ""
-        if encoded_text == "":
+        if encoded_text == "" or encoded_text == None:
             return decoded_text
         current_node = tree
         for char in encoded_text:
@@ -96,6 +99,7 @@ if __name__ == "__main__":
 
     a_great_sentence = "The bird is the word"
 
+    print("Test Case 1")
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))
 
@@ -111,6 +115,23 @@ if __name__ == "__main__":
 
     a_great_sentence = "BBBBBBB"
 
+    print("Test Case 2")
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    encoded_data, tree = Huffman_Coding.huffman_encoding(a_great_sentence)
+
+    #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = Huffman_Coding.huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+    a_great_sentence = ""
+
+    print("Test case 3")
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))
 
