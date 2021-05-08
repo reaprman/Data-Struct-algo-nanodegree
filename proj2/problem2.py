@@ -16,12 +16,15 @@ def find_files(suffix, path):
     """
     files = []
     #files = os.listdir(path)
-    for filename in os.listdir(path):
-      if os.path.isdir(path+"/"+filename):
-        files.extend(find_files(suffix, path+"/"+filename))
-      if filename.endswith(suffix,len(filename)-3):
-        files.append(filename)
-
+    try:
+      for filename in os.listdir(path):
+        if os.path.isdir(path+"/"+filename):
+          files.extend(find_files(suffix, path+"/"+filename))
+        if filename.endswith(suffix,len(filename)-3):
+          files.append(filename)
+    except:
+      print("No path provided")
+      return
     return files
 
 ## Locally save and call this file ex.py ##
@@ -38,3 +41,5 @@ print(os.path.isfile("./ex.py"))
 # Does the file end with .py?
 print("./ex.py".endswith(".py"))
 print(find_files(".c", "./testdir"))
+print(find_files(".c", ""))
+print(find_files(".exe","./testdir"))
