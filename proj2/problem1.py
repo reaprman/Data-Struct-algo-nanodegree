@@ -15,7 +15,7 @@ class Node():
 
 class LRU_Cache(object):
 
-    def __init__(self, capacity):
+    def __init__(self, capacity=5):
         # Initialize class variables
         self.maxsize = capacity
         self.map = dict() #should be a map of the key and the node for the value
@@ -73,12 +73,15 @@ class LRU_Cache(object):
         pass
 
 our_cache = LRU_Cache(5)
+second_cache = LRU_Cache()
+third_cache = LRU_Cache(-1)
 
 our_cache.set(1, 1)
 our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
 
+print("First test")
 print(our_cache.get(1))       # returns 1
 print(our_cache.get(2))       # returns 2
 print(our_cache.get(9))     # returns -1 because 9 is not present in the cache
@@ -88,3 +91,35 @@ our_cache.set(6, 6)
 
 print(our_cache.get(6))
 print(our_cache.get(3))      # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+
+second_cache.set(1, 1)
+second_cache.set(2, 2)
+second_cache.set(3, 3)
+second_cache.set(4, 4)
+
+print("Second test")
+print(second_cache.get(1))       # returns 1
+print(our_cache.get(2))       # returns 2
+print(our_cache.get(9))     # returns -1 because 9 is not present in the cache
+
+second_cache.set(5, 5) 
+second_cache.set(6, 6)
+
+print(second_cache.get(6))
+print(second_cache.get(3))
+
+third_cache.set(1, 1)
+third_cache.set(2, 2)
+third_cache.set(3, 3)
+third_cache.set(4, 4)
+
+print("Third test")
+print(third_cache.get(1))       # returns 1
+print(third_cache.get(2))       # returns 2
+print(third_cache.get(9))     # returns -1 because 9 is not present in the cache
+
+third_cache.set(5, 5) 
+third_cache.set(6, 6)
+
+print(third_cache.get(6))
+print(third_cache.get(3)) 
