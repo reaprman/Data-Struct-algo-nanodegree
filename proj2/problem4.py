@@ -6,6 +6,9 @@ def is_user_in_group(user, group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
+    if user == "" or group == "":
+        print("User or group value is blank")
+        return
     curr_group = group
     users = curr_group.get_users()
     if users:
@@ -49,13 +52,20 @@ sub_child.add_user(sub_child_user)
 child.add_group(sub_child)
 parent.add_group(child)
 
+print("Test case 1")
 if is_user_in_group(sub_child_user, parent):
     print("User is in group")
 else:
     print("User Not in group")
 
+print("Test case 2")
 if is_user_in_group("Parent", parent):
     print("User is in group")
 else:
     print("User Not in group")
-
+    
+print("Test case 3")
+if is_user_in_group("", parent):
+    print("User is in group")
+else:
+    print("User Not in group")
