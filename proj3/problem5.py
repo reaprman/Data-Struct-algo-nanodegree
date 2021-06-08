@@ -86,7 +86,7 @@ class TrieNode:
         ## Recursive function that collects the suffix for 
         ## all complete words below this point
         
-        return self.recursive_Suffixes(suffix, True):
+        return self.recursive_Suffixes(suffix, True)
     
     def recursive_Suffixes(self, suffix, isFirst):
         suffixes = []
