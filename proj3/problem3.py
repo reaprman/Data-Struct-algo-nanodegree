@@ -54,12 +54,14 @@ def test_function(test_case):
     else:
         print("Fail")
 
-print(mergeSort([1,2,3,4,5]))
-test_function([[1, 2, 3, 4, 5], [542, 31]])
+test_function([[1, 2, 3, 4, 5], [542, 31]]) #Pass
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 
 # need additional test cases
-test_function(test_case)
+test_function(test_case) #Pass
+test_function([[], [0, 0]]) #Pass
+test_function([[], []]) #Pass
+test_function([[], [31, 2]]) #Fail
 
 
 

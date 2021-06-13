@@ -1,0 +1,92 @@
+NOTE:
+All answers are the Time Complexity analysis of only the code added to answer each task
+for set(s) and dict(s) I am using the average case on (if in) look ups as python hash function can make collisions uncommon
+
+problem1.py
+using the original sqrt function i split the number in half and did a binary search
+against the original number and the new split number. 
+if the split number times itself == the original then that was the answer otherwise
+
+Time complexity due to the binary search nature of the answer - O(log(n))
+
+space complexity
+sqrt function - O(1) + binary search space complexity
+binary function - O(1) * number of iterations so O(n): where n is the number of iterations
+
+problem2.py
+added pivot point(modified binary search) and binary search helper functions.
+Both the helper functions work out to be O(log(n)) in nature.
+
+Time complexity calcuation starts from rotated_array function:
+O(log(n)) + O(log(n)) = O(log(n))
+
+space complexity
+pivot function - O(1) * number of iterations so O(n): where n is the number of iterations
+binary function - O(1) * number of iterations so O(n): where n is the number of iterations
+rotated function - O(1) + pivot + binary = O(1) + O(n) + O(n)  = O(n) where n is the number of iterations
+
+problem3.py
+used merge sort for this problem and added two helper functions
+
+time complexity - O(n*log(n))
+space complexity - O(n) where n is the number of iterations very large space hit due to the number of arrays required for merge sort
+
+problem4.py
+using modified quick sort which is a divide and conquer algorithm if the data is sufficiently unsorted this will affect
+the time efficiency.
+
+time efficiency
+avg - best case: O(log n)
+worst case: O9n^2)
+
+our solution falls in the avg - best case scenario as the data is not sufficently unsorted.
+
+space complexity
+This modified quicksort uses the same amount of space regardless of the size of data to sort
+O(1)
+
+problem5.py
+time complexity
+Trie insert function - for loop over each char from word - O(n)
+find function - 1 for loop and an if in statement on dict- O(n) * O(1) = O(n)
+suffix functions - recursive function that runs for as many total children there are O(n)
+
+O(n) + O(n) + O(n) = O(3n) = O(n)
+
+space complexity
+this is the total space of the recursive section which depends on the number of total children
+plus the space requirement of the non recursive section which should be linear.
+
+O(1) + O(n) = O(n)
+
+problem6.py
+time complexity - 1 for loop ove the all numbers in the array
+O(n)
+
+space compelxity - same number of variables so same amount of space (linear)
+O(1)
+
+problem7.py
+routetrie insert - O(n)
+routetrie find - O(n)
+
+router add_handler - O(1) its sub insert call time complexity is O(n)
+router lookup - O(1) its sub find call time complexity is O(n)
+router split path - O(n)
+
+time complexity
+O(n) + O(n) + O(1) + O(1) + O(n) = O(3n + 2) = O(n)
+
+space complexity
+routetrie insert - O(1)
+routetrie find - O(1)
+
+router add_handler - O(1)
+router lookup - O(1) 
+router split path - O(1)
+
+O(1)
+
+
+
+

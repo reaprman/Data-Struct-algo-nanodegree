@@ -25,7 +25,7 @@ class TrieNode:
     
     def insert(self, char):
         ## Add a child node in this Trie
-        self.children[ord(char)] = TrieNode
+        self.children[ord(char)] = TrieNode()
         pass
         
 ## The Trie itself containing the root node and insert/find functions

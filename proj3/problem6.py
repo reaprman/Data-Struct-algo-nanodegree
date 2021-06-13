@@ -18,4 +18,17 @@ def get_min_max(ints):
             max = num
     
     return (min, max)
-   
+
+## Example Test Case of Ten Integers
+import random
+
+l = [i for i in range(0, 10)]  # a list containing 0 - 9
+random.shuffle(l)
+j = [i for i in range(0, 100000)]  # a list containing 0 - 9
+random.shuffle(j)
+
+print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail") #Pass
+print ("Pass" if ((0, 99999) == get_min_max(j)) else "Fail") #Pass
+print ("Pass" if (-1 == get_min_max([])) else "Fail") #Pass
+print ("Pass" if ((1, 66) == get_min_max([2,4,6,8,10,44,66,32,1])) else "Fail") #Pass
+print ("Pass" if ((0, 99) == get_min_max(j)) else "Fail") #Fail

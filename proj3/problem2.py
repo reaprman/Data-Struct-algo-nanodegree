@@ -35,6 +35,8 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    if len(input_list) < 1:
+        return -1
     pivot = pivot_point(input_list)
 
     if input_list[pivot] == number:
@@ -70,16 +72,18 @@ def test_function(test_case):
     else:
         print("Fail")
 
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 8])
-test_function([[6, 7, 8, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 10])
-test_function([[7, 8, 1, 2, 3, 4, 5, 6], 8])
-test_function([[7, 8, 1, 2, 3, 4, 5, 6], 10])
-test_function([[7, 8, 1, 2, 3, 4, 5, 6], 8])
-test_function([[8, 1, 2, 3, 4, 5, 6, 7], 10])
-test_function([[7, 8, 1, 2, 3, 4, 5, 6], 5])
-test_function([[2, 3, 4, 5, 6, 7, 8, 1], 8])
-test_function([[3, 4, 5, 6, 7, 8, 1, 2], 1])
-test_function([[8,10,12,14,2,4,6], 10])
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6]) #Pass
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1]) #Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 8]) #Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 1]) #Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 10]) #Pass
+test_function([[7, 8, 1, 2, 3, 4, 5, 6], 8]) #Pass
+test_function([[7, 8, 1, 2, 3, 4, 5, 6], 10]) #Pass
+test_function([[7, 8, 1, 2, 3, 4, 5, 6], 8]) #Pass
+test_function([[8, 1, 2, 3, 4, 5, 6, 7], 10]) #Pass
+test_function([[7, 8, 1, 2, 3, 4, 5, 6], 5]) #Pass
+test_function([[2, 3, 4, 5, 6, 7, 8, 1], 8]) #Pass
+test_function([[3, 4, 5, 6, 7, 8, 1, 2], 1]) #Pass
+test_function([[8,10,12,14,2,4,6], 10]) #Pass
+test_function([[1,1,1,1,1,1,1], 10]) #Pass
+test_function([[], -1]) #Pass
