@@ -46,6 +46,12 @@ This modified quicksort uses the same amount of space regardless of the size of 
 O(1)
 
 problem5.py
+for my Trie tree i decided to store the char as a value in each node and used a dict to hold
+the children. This was to allow constant time look up and input. For the keys I decided to use
+the ASCII value for the characters.
+
+The recursive function had to take into account if it was the first run to be sure the first char wasnt added to the suffixes
+to return.
 time complexity
 Trie insert function - for loop over each char from word - O(n)
 find function - 1 for loop and an if in statement on dict- O(n) * O(1) = O(n)
@@ -60,6 +66,8 @@ plus the space requirement of the non recursive section which should be linear.
 O(1) + O(n) = O(n)
 
 problem6.py
+I decided to go for the O(n) solution and used two variables to keep track of the min and max
+comparing for each number in the array. This should allow for a solution in a single pass through
 time complexity - 1 for loop ove the all numbers in the array
 O(n)
 
@@ -67,6 +75,9 @@ space compelxity - same number of variables so same amount of space (linear)
 O(1)
 
 problem7.py
+similar to solution 5 for the RouterTrie tree I decided to store the path part as a value in
+each node and initialized the handler, which will turn out to be a string variable, for the
+children I used a dict to allow constant time lookup and input.
 routetrie insert - O(n)
 routetrie find - O(n)
 

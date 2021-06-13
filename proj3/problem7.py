@@ -43,6 +43,7 @@ class RouteTrieNode:
     def insert(self, path_part):
         # Insert the node as before
         self.children[path_part] = RouteTrieNode()
+        self.path_part = path_part
 
 
 # The Router class will wrap the Trie and handle 
