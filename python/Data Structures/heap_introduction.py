@@ -626,7 +626,6 @@ class Heap:
         """
         front = 0
         end = self.size()-1
-        prev - self.next_index-1
         if len(self.cbt) == 0:
             return None
             

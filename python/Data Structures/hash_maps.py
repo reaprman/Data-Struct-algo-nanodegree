@@ -125,3 +125,49 @@ class HashMap:
 
     def size(self):
         return self.num_entries
+
+    def delete(self, key):
+        hash_key = self.get_bucket_index(key)
+        head = self.bucket_array[hash_key]
+
+        prev = None
+        while head != None:
+            if prev == None and head.key == key:
+                self.bucket_array[hash_key] = head.next
+                break
+            if head.key == key:
+                prev.next = head.next
+                head.next = None
+                break
+            prev = head
+            head = head.next
+        
+        self.num_entries -= 1
+        return 
+        
+    
+    def _rehash(self):
+        old_bucket_size = len(self.bucket_array)
+        old_bucket = self.bucket_array
+        new_bucket_size = old_bucket_size * 2
+        self.bucket_array = [None for _ range(new_bucket_size)]
+
+        #out loop handles the array and the inner loop handles the linked lists
+        for head in old_bucket:
+            while head != None:
+                self.put(head.key, head.value)      # we can use the put() method to rehash
+                head = head.next
+
+# Test delete operation
+hash_map = HashMap()
+
+hash_map.put("one", 1)
+hash_map.put("two", 2)
+hash_map.put("three", 3)
+hash_map.put("four", 4)
+
+print("size: {}".format(hash_map.size())) # print("size: ", hash_map.size())
+
+print("one: {}".format(hash_map.get("one")))
+print("two: ", hash_map.get("two"))
+print("three: {}".format(hash_map.get("three")))
