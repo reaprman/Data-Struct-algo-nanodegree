@@ -16,10 +16,10 @@ print("Pass" if(wakeup_time[0] == 3) else "Fail")
 def bubble_sort_2(l):
     for i in range(len(l)):
         for j in range(len(l)-i-1):
-            if l[j][0] < l[j+1][0]:
+            if l[j][0] > l[j+1][0]:
                 l[j], l[j+1] = l[j+1], l[j]
             if l[j][0] == l[j+1][0]:
-                if l[j][1] < l[j+1][1]:
+                if l[j][1] >v   l[j+1][1]:
                     l[j], l[j+1] = l[j+1], l[j]
                 
       
